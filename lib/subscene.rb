@@ -33,7 +33,7 @@ module Subscene
   extend self
 
   ENDPOINT     = "http://subscene.com"
-  RELEASE_PATH = "subtitles/release.aspx"
+  RELEASE_PATH = "subtitles/release"
 
   # Public: Search for a particular release.
   #
