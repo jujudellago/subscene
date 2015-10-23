@@ -89,6 +89,7 @@ module Subscene
   #
   # Returns the complete information of the Subtitle.
   def findUrl(id, url)
+    params = {}
     response = connection.get do |req|
       req.url url, params
       req.headers['Cookie'] = "LanguageFilter=#{@lang_id};" if @lang_id
