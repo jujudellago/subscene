@@ -47,7 +47,7 @@ module Subscene
   #
   # Returns the Subtitles found.
   def search(query=nil)
-    params = { q: query } unless query.nil?
+    params = { q: query, l: '', r: true } unless query.nil?
     params ||= {}
 
     response = connection.get do |req|
