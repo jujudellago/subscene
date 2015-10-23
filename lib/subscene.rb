@@ -78,6 +78,28 @@ module Subscene
     subtitle
   end
 
+  # Public: Find a subtitle by id.
+  #
+  # id - The id of the subtitle.
+  #
+  # Examples
+  #
+  #   Subscene.find(136037)
+  #   # => TODO: display example result
+  #
+  # Returns the complete information of the Subtitle.
+  def findUrl(id, url)
+    response = connection.get do |req|
+      req.url url, params
+      req.headers['Cookie'] = "LanguageFilter=#{@lang_id};" if @lang_id
+    end
+    html     = response.body
+
+    subtitle = Subtitle.build(html)
+    subtitle.id = id
+    subtitle
+  end
+
   # Public: Set the language id for the search filter.
   #
   # lang_id - The id of the language. Maximum 3, comma separated.
