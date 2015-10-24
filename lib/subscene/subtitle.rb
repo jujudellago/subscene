@@ -39,7 +39,7 @@ class Subscene::Subtitle
   def self.build(html)
     new({
       id: (html.css("nav.comment-sub a").to_s.match(/subtitleId=(\d+)/)[1] rescue nil),
-      name: (html.css("li.release").children.last.text.strip rescue nil),
+      name: (html.css("li.header h1 span").text.strip rescue nil),
       lang: (html.css("a#downloadButton").text.match(/Download (.*)\n/)[1] rescue nil),
       user: (html.css("li.author").text.strip rescue nil),
       user_id: (html.css("li.author a").attribute("href").value.match(/\d+/).to_s rescue nil),
