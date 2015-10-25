@@ -1,6 +1,6 @@
 class Subscene::SubtitleResult
 
-  attr_accessor :attributes, :id, :name, :url, :lang,
+  attr_accessor :attributes, :id, :name, :url, :lang, :rated,
     :user, :user_id, :comment, :files_count, :hearing_impaired
 
   def initialize(attributes)
@@ -10,6 +10,7 @@ class Subscene::SubtitleResult
     @name    = @attributes[:name]
     @url     = @attributes[:url]
     @lang    = @attributes[:lang]
+    @rated   = @attributes[:rated]
     @user    = @attributes[:user]
     @user_id = @attributes[:user_id]
     @comment = @attributes[:comment]
@@ -25,7 +26,7 @@ class Subscene::SubtitleResult
       name:    (html.css("td.a1 span[2]").text.strip rescue nil),
       url:     subtitle_url,
       lang:    (html.css("td.a1 span[1]").text.strip rescue nil),
-      rated: (html.css("td.a1 span[1]").attribute("class").value.match(/positive/).to_s rescue nil),
+      rated:   (html.css("td.a1 span[1]").attribute("class").value.match(/positive/).to_s rescue nil),
       user:    (html.css("td.a5").text.strip rescue nil),
       user_id: (html.css("td.a5 a").attribute("href").value.match(/\d+/).to_s rescue nil),
       comment: (html.css("td.a6").text.strip rescue nil),
